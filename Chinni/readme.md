@@ -1,6 +1,6 @@
 # ETP Design CA-2
 
-##Section 1: Secure Design Review & Architecture##
+##Section 1: Secure Design Review & Architecture
 
 ###1.1  Risks Identified in Assignment-1 System###
 The Assignment-1 deployment of the Checkout system shipped with four open weaknesses that a competent attacker could chain into a full cluster compromise. Containers ran as root, so any container break-out would land the attacker on the Kubernetes node as a privileged user. The cluster had no NetworkPolicies in place, so any compromised pod could reach any other pod over any port - lateral movement was trivial. No image scanning had been performed, leaving the team blind to known CVEs shipping in the python:3.10-slim base layer and transitive Python packages. Database credentials sat as plain values in the deployment YAML rather than being referenced from a Kubernetes Secret.
